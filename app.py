@@ -24,8 +24,8 @@ def create():
 def save():
     nome = request.form['nome'] 
     crime = request.form['crime']      
-    telefone = request.form['telefone']
-    prisioneiros.append({"id": uuid4(), "nome": nome, "crime": crime, "telefone": telefone})
+    tempo = request.form['tempo']
+    prisioneiros.append({"id": uuid4(), "nome": nome, "crime": crime, "tempo": tempo})
     return render_template('index.html', prisioneiros=prisioneiros)
 
 # Trabalho Final da Disciplina:
