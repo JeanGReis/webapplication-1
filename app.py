@@ -6,15 +6,15 @@ from uuid import uuid4
 
 app = Flask(__name__)
 
-clientes = [
-    {'id': 1, 'nome': 'Fulano', 'email': 'fulano@email.com', 'telefone': '123123'},
-    {'id': 2, 'nome': 'Ciclano', 'email': 'ciclano@email.com', 'telefone': '432423'},
-    {'id': 3, 'nome': 'Beltrano', 'email': 'beltrano@email.com', 'telefone': '6456456'},
+prisioneiros = [
+    {'id': 1, 'nome': 'Túlio', 'crime': 'Assasinato de duas jovens', 'tempo': '10 anos'},
+    {'id': 2, 'nome': 'Roberto', 'crime': 'Furto de carro', 'tempo': '4 anos'},
+    {'id': 3, 'nome': 'Jorge', 'crime': 'Amar demais', 'tempo': 'Prisão perpétua'},
 ]
 
 @app.route('/')
 def index():
-    return render_template('index.html', clientes=clientes)
+    return render_template('index.html', prisioneiros=prisioneiros)
 
 @app.route('/create')
 def create():
@@ -22,11 +22,11 @@ def create():
 
 @app.route('/save', methods=['POST'])
 def save():
-    nome = request.form['nome']         # <input name="nome" ...
-    email = request.form['email']       # Sempre será uma string!
+    nome = request.form['nome'] 
+    crime = request.form['crime']      
     telefone = request.form['telefone']
-    clientes.append({"id": uuid4(), "nome": nome, "email": email, "telefone": telefone})
-    return render_template('index.html', clientes=clientes)
+    prisioneiros.append({"id": uuid4(), "nome": nome, "crime": crime, "telefone": telefone})
+    return render_template('index.html', prisioneiros=prisioneiros)
 
 # Trabalho Final da Disciplina:
 # Implementar o delete 

@@ -14,19 +14,19 @@
         <table class="table table-hover">
         <tr>
             <th>Nome</th>
-            <th>E-mail</th>
-            <th>Telefone</th>
+            <th>Crime</th>
+            <th>tempo</th>
             <th>&nbsp;</th>
             <th>&nbsp;</th>
         </tr>
 
-        {% for cliente in clientes %}        
+        {% for prisioneiro in prisioneiros %}        
             <tr>
-                <td>{{cliente['nome']}}</td>
-                <td>{{cliente['email']}}</td>
-                <td>{{cliente['telefone']}}</td>
+                <td>{{prisioneiro['nome']}}</td>
+                <td>{{prisioneiro['crime']}}</td>
+                <td>{{prisioneiro['tempo']}}</td>
                 <td><a href="#" class="btn btn-sm btn-outline-success">Editar</a></td>
-                <td><a href="/delete/{{cliente['id']}}" class="btn btn-sm btn-danger">Apagar</a></td>
+                <td><a href="/delete/{{prisioneiro['id']}}" class="btn btn-sm btn-danger">Apagar</a></td>
             </tr>
         {% endfor %}
 
