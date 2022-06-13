@@ -54,11 +54,11 @@ def salvar_edicao(id):
     for prisioneiro in prisioneiros:
         if (id == str(prisioneiro['id'])):
             i = prisioneiros.index(prisioneiro)
-            id_modificado = prisioneiro['id']
+            alteracaoId = prisioneiro['id']
     upNome = request.form['nome']
     upCrime = request.form['crime']
     upTempo = request.form['tempo']
-    prisioneiros[i] = {'id':id_modificado,'nome':upNome,'crime':upCrime,'tempo':upTempo}
+    prisioneiros[i] = {'id':alteracaoId,'nome':upNome,'crime':upCrime,'tempo':upTempo}
     return redirect('/')
 
 app.run(debug=True)
