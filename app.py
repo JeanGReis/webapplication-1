@@ -15,6 +15,12 @@ prisioneiros = [
 
 @app.route('/')
 def index():
+    with open('Prisioneiros.csv', 'wt') as file_out:
+        escritor = csv.DictWriter(file_out,['id','nome','crime','tempo'])
+        escritor.writeheader()
+        escritor.writerows(prisioneiros)
+    with open('Prisioneiros.csv','rt') as file_out:
+        leitor = csv.DictReader(file_out)
     return render_template('index.html', prisioneiros=prisioneiros)
 
 @app.route('/create')
@@ -28,11 +34,6 @@ def save():
     tempo = request.form['tempo']
     prisioneiros.append({"id": uuid4(), "nome": nome, "crime": crime, "tempo": tempo})
     return render_template('index.html', prisioneiros=prisioneiros)
-
-# Trabalho Final da Disciplina:
-# Implementar o delete 
-# Implementar o update (rota para mostrar os dados no form e outra para salvar os dados)
-# Salvar os dados, conforme forem sendo manipulados, em um arquivo CSV.
 
 @app.route('/delete/<id>')
 def delete(id):
